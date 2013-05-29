@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+set -e
+[ -n "$BOOTSTRAP_DEBUG" ] && set -x
+
+banner()  { printf -- "-----> $*\n"; }
+log()     { printf -- "       $*\n"; }
+warn()    { printf -- ">>>>>> $*\n"; }
+fail()    { printf -- "\nERROR: $*\n" ; exit 1 ; }
+
+if ! command -v direnv >/dev/null ; then
+  warn "The direnv command is not installed and helps in using"
+  warn "this project."
+  warn ""
+  warn "Please visit https://github.com/zimbatm/direnv for more details."
+  warn ""
+  warn "If you are on a mac and using homebrew, install it with:"
+  warn ""
+  warn "    $ brew install direnv"
+  warn ""
+  warn "Follow the post-install instructions, and re-run $0"
+  warn "\n"
+fi
+
+if ! command -v bundle >/dev/null ; then
+  banner "Installing bundler gem"
+  gem install bundler
+fi
+
+bundle_cmd="bundle install --path vendor/bundle --binstubs bin"
+banner "Running '$bundle_cmd'"
+$bundle_cmd
+
+banner 'All ready!'
