@@ -26,7 +26,7 @@ if ! command -v bundle >/dev/null ; then
   gem install bundler
 fi
 
-bundle_cmd="bundle install --path vendor/bundle --binstubs bin"
+bundle_cmd="bundle install --binstubs bin"
 banner "Running '$bundle_cmd'"
 $bundle_cmd
 
