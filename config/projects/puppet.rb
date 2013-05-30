@@ -1,7 +1,6 @@
-
 name "puppet"
-maintainer "CHANGE ME"
-homepage "CHANGEME.com"
+maintainer "Fletcher Nichol"
+homepage "https://github.com/fnichol/omnibus-puppet"
 
 replaces        "puppet"
 install_path    "/opt/puppet"
@@ -12,7 +11,8 @@ build_iteration 1
 dependency "preparation"
 
 # puppet dependencies/components
-# dependency "somedep"
+dependency "facter-gem"
+dependency "puppet-gem"
 
 # version manifest file
 dependency "version-manifest"
