@@ -12,7 +12,6 @@ dependency "preparation"
 
 # puppet dependencies/components
 dependency "facter-gem"
-dependency "puppet-gem"
 
 # version manifest file
 dependency "version-manifest"

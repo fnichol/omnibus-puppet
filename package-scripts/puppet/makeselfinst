@@ -15,13 +15,17 @@ error_exit()
   exit 1
 }
 
+PREFIX="/usr"
+
 # move the actual files into place
 rm -rf $DEST_DIR/* || error_exit "Cannot remove contents of $DEST_DIR"
 mkdir -p $DEST_DIR || error_exit "Cannot create $DEST_DIR"
 cp -R $INSTALLER_DIR $DEST_DIR || error_exit "Cannot install to $DEST_DIR"
 rm -f $DEST_DIR/$PROGNAME
 
-# You may want to symlink your packages bin files into /usr/bin
-# ln -sf $DEST_DIR/bin/puppet /usr/bin || error_exit "Cannot link puppet to /usr/bin"
+ln -sf $DEST_DIR/bin/puppet /usr/bin || error_exit "Cannot link puppet to /usr/bin"
+ln -sf $DEST_DIR/bin/facter /usr/bin || error_exit "Cannot link facter to /usr/bin"
+
+echo "Thank you for installing Puppet!"
 
 exit 0

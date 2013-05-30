@@ -4,6 +4,14 @@
 # after package is uninstalled.
 #
 
+PREFIX="/usr"
+
+# Clean up binary symlinks if they exist
+if [ ! -e /etc/redhat-release -o "x$1" == "x0" ]; then
+  rm -f $PREFIX/bin/puppet
+  rm -f $PREFIX/bin/facter
+fi
+
 echo "puppet has been uninstalled!"
 
 exit 0
